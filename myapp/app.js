@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 // 미들웨어
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // 뷰 엔진 설정
 app.set('views', path.join(__dirname, 'views'));

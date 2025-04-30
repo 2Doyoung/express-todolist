@@ -10,10 +10,18 @@
     <h1>📝 TO-DO App에 오신 것을 환영합니다</h1>
     <p>할 일 관리를 시작해보세요!</p>
 
-    <div class="buttons">
+    <div class="buttons" id="authButton">
       <a href="/auth/register" class="btn">회원가입</a>
       <a href="/auth/login" class="btn">로그인</a>
     </div>
+    <div class="buttons" id="logoutDiv">
+      <a class="btn" id="logoutButton">로그아웃</a>
+    </div>
+    <div id="todoItemDiv">
+      <input type="text" id="todoItem">
+    </div>
   </div>
+  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

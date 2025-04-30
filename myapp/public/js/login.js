@@ -8,7 +8,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         email,
         password
     }).then((res) => {
-
+        window.location.href = res.data.redirectUrl;
     }).catch((error) => {
         document.getElementById('message').textContent = error.response.data.message;
     })
