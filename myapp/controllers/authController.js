@@ -5,6 +5,10 @@ const showRegister = (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'views', '/register.html'));
 }
 
+const showLogin = (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'views', '/login.html'));
+}
+
 const handleRegister = async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -19,10 +23,14 @@ const handleRegister = async (req, res, next) => {
 
     try {
         await User.insertUser({ email, password });
-        return res.status(201).json({ message: '회원가입 성공' });
+        return res.status(200).json({ redirectUrl: '/' });
     } catch(error) {
         return res.status(500).json({ message: '서버 오류 '});
     }
 }
 
-module.exports = { showRegister, handleRegister };
+const handleLogin = async (req, res, next) => {
+    const { email, password } = req.body;
+}
+
+module.exports = { showRegister, handleRegister, showLogin, handleLogin };

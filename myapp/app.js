@@ -5,8 +5,8 @@ const path = require('path');
 
 dotenv.config();
 
-const authRoutes = require('./routes/authRoutes.js');
 const mainRoutes = require('./routes/mainRoutes.js');
+const authRoutes = require('./routes/authRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
