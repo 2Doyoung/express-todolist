@@ -11,4 +11,15 @@ const addTodo = async (req, res, next) => {
     }
 }
 
-module.exports = { addTodo };
+const todoList = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+
+        const todos = await Todo.getTodoList(userId);
+        res.status(200).json({ todos });
+    } catch(error) {
+        return res.status(500).json({ message: '서버 오류 '});
+    }
+}
+
+module.exports = { addTodo, todoList };

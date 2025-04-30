@@ -5,4 +5,10 @@ const insertTodo = async (todoItem, userId) => {
     await pool.execute(query, [userId, todoItem]);
 }
 
-module.exports = { insertTodo };
+const getTodoList = async (userId) => {
+    const query = 'SELECT todo_item FROM todo WHERE user_id = ?';
+    const [rows] = await pool.execute(query, [userId]);
+    return rows;
+}
+
+module.exports = { insertTodo, getTodoList };

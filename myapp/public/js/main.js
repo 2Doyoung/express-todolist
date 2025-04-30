@@ -4,10 +4,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     await axios.post('/auth/loginCheck', { 
         withCredentials: true 
     }).then((res) => {
+        const hTag = document.getElementById('hTag');
+
         if(res.data.isLoggedIn) {
             const authButton = document.getElementById('authButton');
 
             authButton.style.display = 'none';
+            hTag.textContent = `📝 TO-DO App ${res.data.user.email}님 환영합니다`;
         }
 
         if(!res.data.isLoggedIn) {
@@ -16,8 +19,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             logoutDiv.style.display = 'none';
             todoItemDiv.style.display = 'none';
+            hTag.textContent = `📝 TO-DO App 환영합니다`;
         }
-    })
+    });
+
+    await axios.get('/todo/list')
+    .then((res) => {
+        const todos = res.data.todos;
+        
+        todos.forEach((todo) => {
+            const li = document.createElement('li');
+            li.textContent = todo.todo_item;
+            todoList.appendChild(li);
+        })
+    });
 })
 
 document.getElementById('logoutButton').addEventListener('click', async (e) => {
