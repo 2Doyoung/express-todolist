@@ -1,10 +1,10 @@
 const express = require('express');
 const { showRegister, handleRegister, showLogin, handleLogin, handleLogout } = require('../controllers/authController.js');
-const authJWT = require('../middlewares/authMiddleware.js');
+const { checkJWT } = require('../middlewares/authMiddleware.js');
 
 const router = express.Router();
 
-router.post('/loginCheck', authJWT);
+router.post('/loginCheck', checkJWT);
 
 router.get('/register', showRegister); 
 router.post('/register', handleRegister);

@@ -8,6 +8,7 @@ dotenv.config();
 
 const mainRoutes = require('./routes/mainRoutes.js');
 const authRoutes = require('./routes/authRoutes.js');
+const todoRoutes = require('./routes/todoRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 라우터
 app.use('/', mainRoutes);
 app.use('/auth', authRoutes);
-// app.use('/todo', todoRoutes);
+app.use('/todo', todoRoutes);
 
 // 404 처리
 app.use((req, res, next) => {
