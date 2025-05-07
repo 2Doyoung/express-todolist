@@ -22,7 +22,7 @@ const authJWT = (req, res, next) => {
         req.user = decoded;
         next();
     } catch(error) {
-        res.status(200).json({ isLoggedIn: false });
+        res.status(200).json({ isLoggedIn: false }); 
     }
 }
 
